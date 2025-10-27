@@ -66,3 +66,13 @@ O txt do vídeo no trackers contém as detecções e tracking do novo tracker qu
 
 Os dois últimos valores coloquei sempre 1, pq não sei direito como são úteis. 
 No gt, as 3 últimas colunas são sempre 1.
+
+
+### YOLO Track
+Tem que instalar o pacote da ultralytics para funcionar. É bem pesado.
+
+`pip install ultralytics`
+
+Tem um arquivo yolo_track.py que permite gerar o txt com as detecções e o tracking de um determinado modelo de YOLO e de tracker.
+
+Ele já gera o arquivo no local certo no data/trackers/moranget/moranget-test/
