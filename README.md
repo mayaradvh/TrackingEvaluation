@@ -1,6 +1,7 @@
 # TrackingEvaluation
 Evaluate tracking
 
+Código do TrackEval - https://github.com/JonathonLuiten/TrackEval
 
 Crie um ambiente virtual
 
@@ -11,3 +12,6 @@ Crie um ambiente virtual
 Instale os requirements
 
 `pip install -r requirements.txt `
+
+## Data
+Nossos dados são arquivos 
