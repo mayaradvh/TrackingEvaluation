@@ -18,7 +18,7 @@ os.makedirs(directory, exist_ok=True)
 # Carrega um modelo YOLO pré-treinado
 model = YOLO(YOLO_MODEL_PATH) 
 
-results = model.track(source=FRAMES_FOLDER, save=False, save_txt=False, imgsz=IMAGE_SIZE, conf=0.35)
+results = model.track(source=FRAMES_FOLDER, save=False, save_txt=False, imgsz=IMAGE_SIZE, conf=0.35, tracker="botsort-config1.yaml")
 
 with open(RESULTS_FILE, 'w') as f:
     for frame_id, result in enumerate(results):
