@@ -1,0 +1,40 @@
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+
+# BoT-SORT Config V4 - Ultra Aggressive for Maximum Quality
+# Goal: Get closer to 105 GT tracks while maximizing precision
+# Based on V3 results: Still 228 tracks vs 105 GT, need stricter thresholds
+
+tracker_type: botsort
+
+# ULTRA AGGRESSIVE SETTINGS:
+# Current V3 creates 228 tracks (117% over GT)
+# V4 aims for 120-150 tracks with 85%+ precision
+
+track_high_thresh: 0.55  # VERY HIGH - up from V3's 0.50
+track_low_thresh: 0.25   # HIGHER - up from V3's 0.20 - stricter recovery
+new_track_thresh: 0.60   # VERY STRICT - up from V3's 0.55 - hardest to create new tracks
+track_buffer: 70         # MAXIMUM - up from V3's 60 - longest memory for occlusions
+match_thresh: 0.65       # VERY FLEXIBLE - down from V3's 0.70 - more aggressive matching
+fuse_score: True         # Keep enabled
+
+# BoT-SORT specifics
+gmc_method: sparseOptFlow  # Camera motion compensation
+
+# ReID settings - AGGRESSIVE
+proximity_thresh: 0.35    # MORE LENIENT - down from V3's 0.40
+appearance_thresh: 0.40   # STRICTER - up from V3's 0.35 - only high-confidence re-ID
+with_reid: True           # Essential for this aggressive config
+model: auto
+
+# RATIONALE:
+# 1. Much higher new_track_thresh (0.60) to drastically reduce false track creation
+# 2. Higher track_high_thresh (0.55) for stricter high-confidence matching
+# 3. Longer track_buffer (70) to compensate for aggressive thresholds
+# 4. More flexible match_thresh (0.65) to maintain existing tracks
+# 5. Stricter appearance_thresh (0.40) for reliable re-identification
+
+# EXPECTED IMPROVEMENTS over V3:
+# - Tracks: 228 → 130-160 (closer to 105 GT)
+# - Precision: 84.03% → 86-88%
+# - MOTA: 61.14% → 62-64%
+# - Trade-off: Recall may drop 2-3% more (acceptable for quality)
