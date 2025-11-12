@@ -9,7 +9,9 @@ FRAMES_FOLDER = f"./videos/{VIDEO}/images" #path onde estão os frames dos víde
 
 IMAGE_SIZE = 1920 # Usar 1920 ou 3840
 
-TRACKER_FOLDER_NAME = 'botSort_optimized' # Nome otimizado do tracker
+# TRACKER CONFIGURATION
+TRACKER_CONFIG = "bytetrack.yaml"  # Choose: "bytetrack.yaml" or "botsort-config-v4.yaml"
+TRACKER_FOLDER_NAME = 'bytetrack_default'  # Nome do tracker para salvar resultados
 RESULTS_FILE = f'data/trackers/moranget/moranget-test/{TRACKER_FOLDER_NAME}/data/{VIDEO}.txt' # Arquivo onde será salvas as detecções e tracking
 
 directory = os.path.dirname(RESULTS_FILE)
@@ -28,9 +30,9 @@ results = model.track(
     save=True, 
     save_txt=False, 
     imgsz=IMAGE_SIZE, 
-    conf=0.40,  # Ultra aggressive
-    iou=0.40,   # Very strict NMS
-    tracker="botsort-config-v4.yaml",
+    conf=0.40,  # Detection confidence threshold
+    iou=0.40,   # NMS IoU threshold
+    tracker=TRACKER_CONFIG,
     persist=True,  # Mantém IDs consistentes
     verbose=True   # Mostra progresso
 )
